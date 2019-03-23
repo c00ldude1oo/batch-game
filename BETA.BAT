@@ -1,165 +1,162 @@
-	@ECHO OFF
-	TITLE LOADING
-	set 00=Û
-	CLS
-	GOTO login1
-	ECHO LOADING.. 1
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 9
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 17
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 21
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 34
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 46
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 51
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 65
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 77
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 91
-	PING localhost -n 2 > nul
-	CLS
-	ECHO LOADING.. 100
-	PING localhost -n 2 > nul
-	CLS
-	ECHO DONE LOADING
-	PING localhost -n 2 > nul
-	::=/ login
-	
-	
-	:login1
-	SET "D=%CD%\"
-	TITLE login
-	SET reglog=1
-	COLOR a
-	CLS
-	ECHO 1)login
-	ECHO 2)register
-	CHOICE /c 12 /n
-	SET direction=%ERRORLEVEL%
-	GOTO l%direction%
-	:l2
-	TITLE REGISTER
-	SET ramdo1=%random%
-	SET userg=Guest%ramdo1%
-	SET user=Guest%ramdo1%
-	SET pass=1
-	ECHO please register.
-	ECHO.
-	SET /P user=Username:
-	SET /P pass=Password:
-	CLS
-	IF EXIST "%D%%user%.gamdat" GOTO exist
-	IF %user% == %userg% GOTO A2
-	GOTO A1
-	:A2
-	ECHO this is a guest acccount no password and no saves.
-	PAUSE
-	CLS
-	GOTO menu
-	:A1
-	ECHO your acccount %user% has been created
-	ECHO.
-	PAUSE
-	CLS
-	:B210
-	(
-	ECHO %user%
-	ECHO %pass%
-	) >"%D%%user%.gamdat"
-	GOTO log
-	:exist
-	ECHO THE USERNAME %user% HAS BEEN USED.
-	PING localhost -n 2 > nul
-	GOTO reg
-	:login
-	SET code=%u%
-	< "%D%%code%.gamdat" (
-	SET /P user=
-	SET /P pass=
-	)
-	GOTO logingin
-	:l1
-	TITLE LOGIN
-	CLS
-	ECHO please Login.
-	ECHO.
-	SET /P u=Username:
-	GOTO login
-	:logingin
-	SET /P pa=Password:
-	IF %u%==%user% IF %pa%==%pass% GOTO B
-	CLS
-	COLOR 4f
-	ECHO Invlalid username or password.
-	ECHO.
-	PAUSE
-	CLS
-	GOTO login1
-	:B
-	ECHO You are now logged in as %user%
-	ECHO.
-	PAUSE
-	CLS
-	ECHO looking for saved game.
-
-	::=\
-	:eEXIT2
-	:menu
-	:: main menu
-	TITLE Batch RPG 
-	SETlocal enabledelayedexpansion
-	CLS
-	ECHO.
-	ECHO  ÛÛÛÛÛÛÛÛ    ÛÛÛÛÛÛÛÛ      ÛÛÛÛÛÛÛÛ
-	ECHO  ÛÛ      ÛÛ  ÛÛ      ÛÛ  ÛÛ
-	ECHO  ÛÛ      ÛÛ  ÛÛ      ÛÛ  ÛÛ
-	ECHO  ÛÛÛÛÛÛÛÛ    ÛÛÛÛÛÛÛÛ    ÛÛ   ÛÛÛÛÛ
-	ECHO  ÛÛ    ÛÛ    ÛÛ          ÛÛ        ÛÛ
-	ECHO  ÛÛ     ÛÛ   ÛÛ          ÛÛ        ÛÛ
-	ECHO  ÛÛ      ÛÛ  ÛÛ            ÛÛÛÛÛÛÛÛ
-	ECHO.
-	ECHO.
-	ECHO 1)begin
-	ECHO 2)load game
-	ECHO 3)EXIT
-	ECHO.
-	CHOICE /c 123 /n
-	SET direction=%ERRORLEVEL%
-	GOTO new%direction%
-	:new3
-	EXIT
-	:new2
-	:: setup
-	SET bosshealth=500
-	SET bossdmg=10
-	SET health=100
-	SET playerdmg=7
-	SET money=10
-	SET bodycount=0
-	SET BB=false
-	SET Pistol=false
-	SET 2ndpistol=false
-	SET current=Fist
-	SET p=false
-	SET BB1=0
-	SET Pistol1=0
-	SET 2ndpistol1=0
-	GOTO loadgame
+@ECHO OFF
+TITLE LOADING
+set 00=Ã›
+CLS
+GOTO login1
+ECHO LOADING.. 1
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 9
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 17
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 21
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 34
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 46
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 51
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 65
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 77
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 91
+PING localhost -n 2 > nul
+CLS
+ECHO LOADING.. 100
+PING localhost -n 2 > nul
+CLS
+ECHO DONE LOADING
+PING localhost -n 2 > nul
+::=/ login
+:login1
+SET "D=%CD%\"
+TITLE login
+SET reglog=1
+COLOR a
+CLS
+ECHO 1)login
+ECHO 2)register
+CHOICE /c 12 /n
+SET direction=%ERRORLEVEL%
+GOTO l%direction%
+:l2
+TITLE REGISTER
+SET ramdo1=%random%
+SET userg=Guest%ramdo1%
+SET user=Guest%ramdo1%
+SET pass=1
+ECHO please register.
+ECHO.
+SET /P user=Username:
+SET /P pass=Password:
+CLS
+IF EXIST "%D%%user%.gamdat" GOTO exist
+IF %user% == %userg% GOTO A2
+GOTO A1
+:A2
+ECHO this is a guest acccount no password and no saves.
+PAUSE
+CLS
+GOTO menu
+:A1
+ECHO your acccount %user% has been created
+ECHO.
+PAUSE
+CLS
+:B210
+(
+ECHO %user%
+ECHO %pass%
+) >"%D%%user%.gamdat"
+GOTO log
+:exist
+ECHO THE USERNAME %user% HAS BEEN USED.
+PING localhost -n 2 > nul
+GOTO reg
+:login
+SET code=%u%
+< "%D%%code%.gamdat" (
+SET /P user=
+SET /P pass=
+)
+GOTO logingin
+:l1
+TITLE LOGIN
+CLS
+ECHO please Login.
+ECHO.
+SET /P u=Username:
+GOTO login
+:logingin
+SET /P pa=Password:
+IF %u%==%user% IF %pa%==%pass% GOTO B
+CLS
+COLOR 4f
+ECHO Invlalid username or password.
+ECHO.
+PAUSE
+CLS
+GOTO login1
+:B
+ECHO You are now logged in as %user%
+ECHO.
+PAUSE
+CLS
+ECHO looking for saved game.
+::=\
+:eEXIT2
+:menu
+:: main menu
+TITLE Batch RPG 
+SETlocal enabledelayedexpansion
+CLS
+ECHO.
+ECHO  Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›    Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›      Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›
+ECHO  Ã›Ã›      Ã›Ã›  Ã›Ã›      Ã›Ã›  Ã›Ã›
+ECHO  Ã›Ã›      Ã›Ã›  Ã›Ã›      Ã›Ã›  Ã›Ã›
+ECHO  Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›    Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›    Ã›Ã›   Ã›Ã›Ã›Ã›Ã›
+ECHO  Ã›Ã›    Ã›Ã›    Ã›Ã›          Ã›Ã›        Ã›Ã›
+ECHO  Ã›Ã›     Ã›Ã›   Ã›Ã›          Ã›Ã›        Ã›Ã›
+ECHO  Ã›Ã›      Ã›Ã›  Ã›Ã›            Ã›Ã›Ã›Ã›Ã›Ã›Ã›Ã›
+ECHO.
+ECHO.
+ECHO 1)begin
+ECHO 2)load game
+ECHO 3)EXIT
+ECHO.
+CHOICE /c 123 /n
+SET direction=%ERRORLEVEL%
+GOTO new%direction%
+:new3
+EXIT
+:new2
+:: setup
+SET bosshealth=500
+SET bossdmg=10
+SET health=100
+SET playerdmg=7
+SET money=10
+SET bodycount=0
+SET BB=false
+SET Pistol=false
+SET 2ndpistol=false
+SET current=Fist
+SET p=false
+SET BB1=0
+SET Pistol1=0
+SET 2ndpistol1=0
+GOTO loadgame
 :hhome4
 :: code menu
 CLS
@@ -172,42 +169,42 @@ SET /P code=enter:
 IF %code% == 222575 SET /a money+=20
 IF %code% == 212511 SET /a health+=20
 GOTO home
-	:new1
-	:: setup
-	SET bosshealth=500
-	SET bossdmg=10
-	SET health=100
-	SET playerdmg=7
-	SET money=10
-	SET bodycount=0
-	SET BB=false
-	SET Pistol=false
-	SET 2ndpistol=false
-	SET current=Fist
-	SET p=false
-	SET BB1=0
-	SET Pistol1=0
-	SET 2ndpistol1=0
-	GOTO home
+:new1
+:: setup
+SET bosshealth=500
+SET bossdmg=10
+SET health=100
+SET playerdmg=7
+SET money=10
+SET bodycount=0
+SET BB=false
+SET Pistol=false
+SET 2ndpistol=false
+SET current=Fist
+SET p=false
+SET BB1=0
+SET Pistol1=0
+SET 2ndpistol1=0
+GOTO home
 :purchase5 
 :: ^ to get back from shop
-	:home
-	:: game menu
-	CLS
-	ECHO.
-	ECHO HP: %health%  $%money% #kills:%bodycount% DMG:!playerdmg!
-	ECHO.
-	ECHO 1)Go out into the wild
-	IF !money! GEQ 10 ECHO 2)Shop
-	IF NOT !money! GEQ 10 ECHO 2)
-	ECHO 3)Inventory
-	ECHO 4)codes
-	ECHO 5)save game
-	ECHO 6)Exit
-	ECHO.
-	CHOICE /c 123456 /n
-	SET direction=%ERRORLEVEL%
-	GOTO hhome%direction%
+:home
+:: game menu
+CLS
+ECHO.
+ECHO HP: %health%  $%money% #kills:%bodycount% DMG:!playerdmg!
+ECHO.
+ECHO 1)Go out into the wild
+IF !money! GEQ 10 ECHO 2)Shop
+IF NOT !money! GEQ 10 ECHO 2)
+ECHO 3)Inventory
+ECHO 4)codes
+ECHO 5)save game
+ECHO 6)Exit
+ECHO.
+CHOICE /c 123456 /n
+SET direction=%ERRORLEVEL%
+GOTO hhome%direction%
 :hhome6
 CLS
 ECHO do you want to save game?
@@ -216,15 +213,14 @@ ECHO 2)no
 CHOICE /c 12 /n
 SET direction=%ERRORLEVEL%
 GOTO eEXIT%direction%
-	:loadgame
-	< "%D%\%user%.gamdat" (
-	SET /P user=
-	SET /P pass=
-	SET /P money=
-	SET /P bodycount=
-	)
-	GOTO home
-
+:loadgame
+< "%D%\%user%.gamdat" (
+SET /P user=
+SET /P pass=
+SET /P money=
+SET /P bodycount=
+)
+GOTO home
 ::## INVENTORY ##########################################
 :hhome3
 CLS
